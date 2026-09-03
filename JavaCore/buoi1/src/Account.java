@@ -20,6 +20,9 @@ public class Account {
         this.createDate = createDate;
     }
 
+    public Account(String email, String userName, String fullName, LocalDate createDate) {
+    }
+
     public int getAccountID() {
         return accountID;
     }

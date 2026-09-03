@@ -385,6 +385,7 @@ public class Program {
 //        soChanDuong();
 //        soNguyenDuong();
 //        inAccount(accounts);
+        Assignment3.E1q1();
     }
 
     public static Account createAccount(Scanner scanner, ArrayList<Department> departments) {
@@ -523,4 +524,5 @@ public class Program {
 //        }
 //        System.out.println();
 //    }
+
 }
