@@ -8,6 +8,11 @@ public class Bao extends TaiLieu{
     public Bao() {
     }
 
+    @Override
+    public String toBang() {
+        return String.format("|%15s|%20s|%20s|%20s|\n", getMaTaiLieu(), getTenNhaXB(), getSoBanPhatHanh(), ngayPhatHanh);
+    }
+
     public Bao(String maTaiLieu, String tenNhaXB, int soBanPhatHanh, LocalDate ngayPhatHanh) {
         super(maTaiLieu, tenNhaXB, soBanPhatHanh);
         this.ngayPhatHanh = ngayPhatHanh;

@@ -7,6 +7,11 @@ public class Sach extends TaiLieu{
     public Sach() {
     }
 
+    @Override
+    public String toBang() {
+        return String.format("|%15s|%20s|%20s|%20s|%15s|\n", getMaTaiLieu(), getTenNhaXB(), getSoBanPhatHanh(), tenTacGia, soTrang);
+    }
+
     public Sach(String maTaiLieu, String tenNhaXB, int soBanPhatHanh, String tenTacGia, int soTrang) {
         super(maTaiLieu, tenNhaXB, soBanPhatHanh);
         this.tenTacGia = tenTacGia;

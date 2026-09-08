@@ -107,8 +107,7 @@ public class QLTV implements IQLTV{
                 System.out.println("+---------------+--------------------+--------------------+--------------------+---------------+");
                 for (TaiLieu taiLieu : taiLieus){
                     if (taiLieu instanceof Sach){
-                        Sach sach = (Sach) taiLieu;
-                        System.out.printf("|%15s|%20s|%20s|%20s|%15s|\n", sach.getMaTaiLieu(), sach.getTenNhaXB(), sach.getSoBanPhatHanh(), sach.getTenTacGia(), sach.getSoTrang());
+                        System.out.println(taiLieu.toBang());
                     }
                 }
                 System.out.println("+---------------+--------------------+--------------------+--------------------+---------------+");
@@ -119,8 +118,7 @@ public class QLTV implements IQLTV{
                 System.out.println("+---------------+--------------------+--------------------+--------------------+--------------------+");
                 for (TaiLieu taiLieu : taiLieus){
                     if (taiLieu instanceof TapChi){
-                        TapChi tapChi = (TapChi) taiLieu;
-                        System.out.printf("|%15s|%20s|%20s|%20s|%20s|\n", tapChi.getMaTaiLieu(), tapChi.getTenNhaXB(), tapChi.getSoBanPhatHanh(), tapChi.getSoPhatHanh(), tapChi.getThangPhatHanh());
+                        System.out.println(taiLieu.toBang());
                     }
                 }
                 System.out.println("+---------------+--------------------+--------------------+--------------------+--------------------+");
@@ -131,8 +129,7 @@ public class QLTV implements IQLTV{
                 System.out.println("+---------------+--------------------+--------------------+--------------------+");
                 for (TaiLieu taiLieu : taiLieus){
                     if (taiLieu instanceof Bao){
-                        Bao bao = (Bao) taiLieu;
-                        System.out.printf("|%15s|%20s|%20s|%20s|\n", bao.getMaTaiLieu(), bao.getTenNhaXB(), bao.getSoBanPhatHanh(), bao.getNgayPhatHanh());
+                        System.out.println(taiLieu.toBang());
                     }
                 }
                 System.out.println("+---------------+--------------------+--------------------+--------------------+");

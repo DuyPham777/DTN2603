@@ -1,6 +1,6 @@
 package Entity;
 
-public class TaiLieu {
+public abstract class TaiLieu {
     private String maTaiLieu;
     private String tenNhaXB;
     private int soBanPhatHanh;
@@ -37,4 +37,6 @@ public class TaiLieu {
     public void setSoBanPhatHanh(int soBanPhatHanh) {
         this.soBanPhatHanh = soBanPhatHanh;
     }
+
+    public abstract String toBang();
 }

@@ -9,6 +9,11 @@ public class TapChi extends  TaiLieu {
     public TapChi() {
     }
 
+    @Override
+    public String toBang() {
+        return String.format("|%15s|%20s|%20s|%20s|%20s|", getMaTaiLieu(), getTenNhaXB(), getSoBanPhatHanh(), soPhatHanh, thangPhatHanh);
+    }
+
     public TapChi(String maTaiLieu, String tenNhaXB, int soBanPhatHanh, String soPhatHanh, YearMonth thangPhatHanh) {
         super(maTaiLieu, tenNhaXB, soBanPhatHanh);
         this.soPhatHanh = soPhatHanh;
