@@ -7,10 +7,10 @@ public class Assignment3 {
     public  static void E1q1(){
         float luongAcc1 = 5240.5f;
         float luongAcc2 =  10970.055f;
-        int lamTronAcc1 = (int) 5240.5f;
-        int lamTronAcc2 = (int) 10970.055f;
-        System.out.println("Luong ccua Account 1 sau khi lam tron la" + lamTronAcc1 + "$");
-        System.out.println("Luong ccua Account 2 sau khi lam tron la" + lamTronAcc2 + "$");
+        int lamTronAcc1 = (int) luongAcc1;
+        int lamTronAcc2 = (int) luongAcc2;
+        System.out.println("Luong cua Account 1 sau khi lam tron la" + lamTronAcc1 + "$");
+        System.out.println("Luong cua Account 2 sau khi lam tron la" + lamTronAcc2 + "$");
     }
 
     public static void E1q2(){
@@ -33,7 +33,7 @@ public class Assignment3 {
         int a = scanner.nextInt();
         System.out.println("Nhap so b :");
         int b = scanner.nextInt();
-        System.out.println("Thuong cua a va b la :" + a/b);
+        System.out.println("Thuong cua a va b la :" + (float)a/b);
     }
 
     public static void E2q1(){
@@ -76,9 +76,8 @@ public class Assignment3 {
         System.out.println("Nhap xau ky tu: ");
         String kyTu = scanner.nextLine();
         int dem = 0;
-        for (int i = 0; i < kyTu.length(); i++) {
-
-        }
+        String[] arr = kyTu.trim().split(" +");
+        System.out.println("So tu la: " + arr.length);
     }
 
     public static void E4q2(){
@@ -307,4 +306,5 @@ public class Assignment3 {
             }
         }
     }
+    public static void
 }
