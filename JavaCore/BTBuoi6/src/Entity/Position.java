@@ -16,7 +16,7 @@ public class Position {
         return positionId;
     }
 
-    public void setPositionID(int positionId) {
+    public void setPositionId(int positionId) {
         this.positionId = positionId;
     }
 
