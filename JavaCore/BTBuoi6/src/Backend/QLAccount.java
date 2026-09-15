@@ -1,6 +1,7 @@
 package Backend;
 
 import Entity.Account;
+import Utils.JDBCUtils;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ public class QLAccount implements IQLAccount{
 
     @Override
     public void hienThiAccount() {
-        List<Account> accounts = new ArrayList<>(); // local, luôn "sạch" mỗi lần gọi
+        List<Account> accounts = new ArrayList<>();
         String sql = "SELECT * FROM `account`";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = JDBCUtils.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
 
@@ -70,7 +71,7 @@ public class QLAccount implements IQLAccount{
 
         String sql = "INSERT INTO `account` (email, username, fullname, department_id, position_id) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = JDBCUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setString(1, email);
@@ -98,7 +99,7 @@ public class QLAccount implements IQLAccount{
 
         String sql = "DELETE FROM `account` WHERE account_id = ?";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = JDBCUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setInt(1, accountId);
@@ -126,7 +127,7 @@ public class QLAccount implements IQLAccount{
         int positionId = Integer.parseInt(scanner.nextLine().trim());
         String sql = "UPDATE `account` SET username = ?, department_id = ?, position_id = ? WHERE account_id = ?";
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = JDBCUtils.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setString(1, userName);

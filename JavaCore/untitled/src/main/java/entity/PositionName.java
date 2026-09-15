@@ -1,0 +1,5 @@
+package entity;
+
+public enum PositionName {
+    DEV, TEST, SCRUM_MASTER, PM, DEVOPS, BUSINESS_ANALYST, QA_LEAD, TEAM_LEAD, INTERN, UI_UX_DESIGNER
+}
