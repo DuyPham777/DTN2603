@@ -16,7 +16,9 @@ public class Account {
     private String email;
     private String userName;
     private String fullName;
+    private Gender gender;
     private Department department;
     private Position position;
     private LocalDate createDate;
+
 }

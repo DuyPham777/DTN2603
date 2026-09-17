@@ -4,6 +4,8 @@ import backend.repository.IQLNSRepository;
 import backend.repository.impl.QLNSRepositoryImpl;
 import backend.service.IQLNSService;
 import entity.Account;
+import entity.Department;
+import entity.Position;
 
 import java.util.List;
 
@@ -21,6 +23,18 @@ public class QLNSServiceImpl implements IQLNSService {
     }
 
     @Override
+    public List<Department> getDepartments() {
+        List<Department> departments = repository.getDepartments();
+        return departments;
+    }
+
+    @Override
+    public List<Position> getPositions() {
+        List<Position> positions = repository.getPositions();
+        return positions;
+    }
+
+    @Override
     public boolean xoaTheoAccId(int accountId) {
         return repository.xoaTheoAccId(accountId);
     }
@@ -31,7 +45,24 @@ public class QLNSServiceImpl implements IQLNSService {
     }
 
     @Override
-    public boolean themAccount(String email, String userName, String fullName, int departmentId, int positionId) {
-        return repository.themAccount(email, userName, fullName, departmentId, positionId);
+    public boolean themAccount(Account account) {
+        return repository.themAccount(account);
     }
+
+
+    @Override
+    public boolean checkEmailExist(String email) {
+        return repository.checkEmailExist(email);
+    }
+
+    @Override
+    public boolean checkUserNameExist(String userName) {
+        return repository.checkUserNameExist(userName);
+    }
+
+    @Override
+    public boolean checkAccountIdExist(int accountId) {
+        return repository.checkAccountIdExist(accountId);
+    }
+
 }
