@@ -1,5 +1,6 @@
 package frontend;
 
+import Utils.ScannerUtils;
 import backend.controller.QLNSController;
 import entity.Account;
 import entity.Department;
@@ -20,17 +21,6 @@ public class Function {
         controller = new QLNSController();
     }
 
-    public String checkLength(int min, int max) {
-        while (true) {
-            String text = scanner.nextLine();
-            if (text.trim().length() < min || text.trim().length() > max) {
-                System.err.println(String.format("Vui lòng nhập từ %d đến %d kí tự!\n", min, max));
-                continue;
-            }
-            return text;
-        }
-    }
-
     public void hienthi(){
         System.out.println("===== Hien thi toan bo account =====");
         List<Account> accounts = controller.getAccounts();
@@ -40,34 +30,32 @@ public class Function {
         String email;
         while (true){
             System.out.println("Nhap email: ");
-            email = this.checkLength(6,100);
+            email = ScannerUtils.checkLength(3, 50);
             boolean checkEmailExist = controller.checkEmailExist(email);
             if (checkEmailExist) {// true -> báo lỗi
-                System.err.println("Mã tài liệu này đã tồn tại. Nhập lại!");
+                System.err.println("Email da ton tai. Nhap lai!");
                 continue;
             }
-            String EMAIL_REGEX = "^[\\w.+-]+@[\\w-]+\\.[a-zA-Z]{2,}$";
-            if (!email.trim().matches(EMAIL_REGEX)) {
-                System.err.println("Email khong dung dinh dang! (vd: a@gmail.com)");
-                continue;
-            }
+            ScannerUtils.inputEmail();
             break;
         }
 
         String userName;
         while (true){
             System.out.println("Nhap username: ");
-            userName = this.checkLength(6,100);
-            boolean checkUserNameExist = controller.checkUserNameExist(userName);
+            userName = ScannerUtils.checkLength(6,100);
+
+            Integer id = null;
+            boolean checkUserNameExist = controller.checkUserNameExist(userName, id);
             if (checkUserNameExist) {// true -> báo lỗi
-                System.err.println("Mã tài liệu này đã tồn tại. Nhập lại!");
+                System.err.println("Username da ton tai. Nhap lai!");
                 continue;
             }
             break;
         }
 
         System.out.println("Nhap ho ten: ");
-        String fullName = this.checkLength(6,100);
+        String fullName = ScannerUtils.checkLength(6,100);
 
         System.out.println("Chon gender: 1. Male    2. Female    other.Other");
         Gender gender;
@@ -172,8 +160,9 @@ public class Function {
         String userName;
         while (true) {
             System.out.println("Nhap username moi: ");
-            userName = this.checkLength(6, 100);
-            boolean checkUserNameExist = controller.checkUserNameExist(userName);
+            userName = ScannerUtils.checkLength(6, 100);
+            Integer id = null;
+            boolean checkUserNameExist = controller.checkUserNameExist(userName, id);
             if (checkUserNameExist) {// true -> báo lỗi
                 System.err.println("Username da ton tai. Nhap lai!");
                 continue;
@@ -256,6 +245,13 @@ public class Function {
         }
     }
 
+    private void importCSV() {
+        System.out.println("Nhap duong dan file csv muon import:");//F:\DTN2603\JavaCore\csv\input_account.csv
+        String url = scanner.nextLine();
+        String message = controller.importCSVAcc(url);
+        System.out.println(message);
+    }
+
     public void show(List<Account> accounts) {
         System.out.println("+---------------+-------------------------+---------------+-------------------------+---------------+---------------+-------------------------+---------------+-------------------------+---------------+");
         System.out.printf("|%15s|%25s|%15s|%25s|%15s|%15s|%25s|%15s|%25s|%15s|\n", "Ma dinh danh", "Email", "Ten", "Ten day du", "Gioi tinh", "Ma phong ban", "Ten phong ban", "Ma chuc vu", "Ten chuc vu", "Ngay tao");
@@ -279,7 +275,8 @@ public class Function {
             System.out.println("2. Them Account");
             System.out.println("3. Xoa Account theo id");
             System.out.println("4. Sua username theo id");
-            System.out.println("5. Quay lai menu chinh");
+            System.out.println("5. Import csv account");
+            System.out.println("6. Quay lai menu chinh");
             System.out.println("===========================");
             System.out.print("Hay chon chuc nang: ");
             String choice = scanner.nextLine();
@@ -297,6 +294,9 @@ public class Function {
                     this.sua();
                     break;
                 case "5":
+                    this.importCSV();
+                    break;
+                case "6" :
                     System.exit(0);
                     break;
                 default:System.out.println("Nhap sai! Nhap lai");

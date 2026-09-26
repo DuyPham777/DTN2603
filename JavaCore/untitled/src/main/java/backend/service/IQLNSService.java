@@ -2,7 +2,6 @@ package backend.service;
 
 import entity.Account;
 import entity.Department;
-import entity.Gender;
 import entity.Position;
 
 import java.util.List;
@@ -17,7 +16,8 @@ public interface IQLNSService {
     boolean themAccount(Account account);
 
     boolean checkEmailExist(String email);
-    boolean checkUserNameExist(String userName);
-
+    boolean checkUserNameExist(String userName, Integer id);
     boolean checkAccountIdExist(int accountId);
+
+    String importCSVAcc(String url);
 }

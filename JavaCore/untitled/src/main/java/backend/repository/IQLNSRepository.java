@@ -17,6 +17,6 @@ public interface IQLNSRepository {
     boolean themAccount(Account account);
 
     boolean checkEmailExist(String email);
-    boolean checkUserNameExist(String userName);
+    boolean checkUserNameExist(String userName, Integer id);
     boolean checkAccountIdExist(int accountId);
 }

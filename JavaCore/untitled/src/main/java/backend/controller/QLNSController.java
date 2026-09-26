@@ -47,11 +47,15 @@ public class QLNSController {
         return service.checkEmailExist(email);
     }
 
-    public boolean checkUserNameExist(String userName) {
-        return service.checkUserNameExist(userName);
+    public boolean checkUserNameExist(String userName, Integer id) {
+        return service.checkUserNameExist(userName, id);
     }
 
     public boolean checkAccountIdExist(int accountId) {
         return service.checkAccountIdExist(accountId);
+    }
+
+    public String importCSVAcc(String url) {
+        return service.importCSVAcc(url);
     }
 }

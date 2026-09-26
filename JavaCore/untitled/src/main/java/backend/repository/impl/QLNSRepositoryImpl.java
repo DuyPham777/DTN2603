@@ -9,6 +9,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class QLNSRepositoryImpl implements IQLNSRepository {
 
@@ -189,14 +190,19 @@ public class QLNSRepositoryImpl implements IQLNSRepository {
     }
 
     @Override
-    public boolean checkUserNameExist(String userName) {
+    public boolean checkUserNameExist(String userName, Integer id) {
         Connection connection = null;
         try {
             connection = JDBCUtils.getConnection();
-            String sql = "SELECT * FROM `account` WHERE username = ?";
+            String sql = "SELECT * FROM `account` WHERE username = ? AND account_id != account_id";
+            if(Objects.nonNull(id)){
+                sql += "and account_id != ?";
+            }
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userName);
-
+            if(Objects.nonNull(id)){
+                preparedStatement.setInt(2, id);
+            }
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 return true;// tồn tại
