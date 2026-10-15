@@ -146,8 +146,8 @@ public class QLNSServiceImpl implements IQLNSService {
             }
         }
 
-        String userName=values[1];
-        if(userName.length()<6 || userName.length() > 100) {
+        String userName = values[1];
+        if(userName.length() < 6 || userName.length() > 100) {
             errors.add("Username có độ dài từ 6 đến 100 kí tự");
         }
         else {
@@ -157,7 +157,7 @@ public class QLNSServiceImpl implements IQLNSService {
         }
 
         String fullName=values[2];
-        if(fullName.length()<6 || fullName.length() > 100) {
+        if(fullName.length() < 6 || fullName.length() > 100) {
             errors.add("FullName có độ dài từ 6 đến 100 kí tự");
         }
 

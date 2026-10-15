@@ -40,6 +40,9 @@ public class Account {
     @Column(name = "fullname", nullable = false, length = 100)
     private String fullName;
 
+    @Column(name = "password", nullable = false, length = 100)
+    private String password;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")
     private Gender gender;

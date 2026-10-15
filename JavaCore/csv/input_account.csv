@@ -1,0 +1,4 @@
+account_id,email,username,fullname,gender,department_id,position_id,create_date
+a1,admin1@gmail.com,admin1,Pham Huynh Duc D,MALE,,,
+a2,admin2@gmail.com,admin2,Lai Van A,MALE,,,
+a3,admin3@gmail.com,admin3,Nguyen Thi B,FEMALE,,,

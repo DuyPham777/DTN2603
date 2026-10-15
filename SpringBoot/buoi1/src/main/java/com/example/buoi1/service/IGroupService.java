@@ -1,17 +1,23 @@
 package com.example.buoi1.service;
 
-import com.example.buoi1.entity.Group;
+import com.example.buoi1.dto.AccountDTO;
+import com.example.buoi1.dto.GroupDTO;
+import com.example.buoi1.form.GroupAccountForm;
+import com.example.buoi1.form.GroupForm;
 
 import java.util.List;
 
 public interface IGroupService {
-    List<Group> findAll();
+    List<GroupDTO> findAll();
 
-    Group findById(Integer id);
+    GroupDTO findById(Integer id);
 
-    void create(Group group);
+    void create(GroupForm form);
 
-    void update(Integer id, Group group);
+    void update(Integer id, GroupForm form);
 
     void deleteById(Integer id);
+
+    void addAccountToGroup(GroupAccountForm form);
+
 }

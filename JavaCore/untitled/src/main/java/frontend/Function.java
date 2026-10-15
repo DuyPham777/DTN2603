@@ -229,7 +229,7 @@ public class Function {
     public void xoa(){
         int accountId;
         while (true){
-            System.out.println("Nhap ma dinh danh can xoa: ");
+            System.out.println("Nhap ma dinh danh can xoa: ")   ;
             accountId = Integer.parseInt(scanner.nextLine().trim());
             boolean checkAccountIdExist = controller.checkAccountIdExist(accountId);
             if (checkAccountIdExist)

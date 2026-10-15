@@ -1,6 +1,9 @@
 package com.example.buoi1.controller;
 
+import com.example.buoi1.dto.GroupDTO;
 import com.example.buoi1.entity.Group;
+import com.example.buoi1.form.GroupAccountForm;
+import com.example.buoi1.form.GroupForm;
 import com.example.buoi1.service.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,27 +25,32 @@ public class GroupController {
     private IGroupService groupService;
 
     @GetMapping
-    public List<Group> findAll() {
+    public List<GroupDTO> findAll() {
         return groupService.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    public Group findById(@PathVariable Integer id) {
+    public GroupDTO findById(@PathVariable Integer id) {
         return groupService.findById(id);
     }
 
     @PostMapping
-    public void create(@RequestBody Group group) {
-        groupService.create(group);
+    public void create(@RequestBody GroupForm form) {
+        groupService.create(form);
     }
 
     @PutMapping(value = "/{id}")
-    public void update(@PathVariable Integer id, @RequestBody Group group) {
-        groupService.update(id, group);
+    public void update(@PathVariable Integer id, @RequestBody GroupForm form) {
+        groupService.update(id, form);
     }
 
     @DeleteMapping(value = "/{id}")
     public void deleteById(@PathVariable Integer id) {
         groupService.deleteById(id);
+    }
+
+    @PostMapping(value = "/add-account")
+    public void addAccount(@RequestBody GroupAccountForm form) {
+        groupService.addAccountToGroup(form);
     }
 }

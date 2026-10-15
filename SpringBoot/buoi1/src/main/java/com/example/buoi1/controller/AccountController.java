@@ -1,6 +1,8 @@
 package com.example.buoi1.controller;
 
 import com.example.buoi1.entity.Account;
+import com.example.buoi1.dto.AccountDTO;
+import com.example.buoi1.form.AccountForm;
 import com.example.buoi1.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,23 +24,23 @@ public class AccountController {
     private IAccountService accountService;
 
     @GetMapping
-    public List<Account> findAll() {
+    public List<AccountDTO> findAll() {
         return accountService.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    public Account findById(@PathVariable Integer id) {
+    public AccountDTO findById(@PathVariable Integer id) {
         return accountService.findById(id);
     }
 
     @PostMapping
-    public void create(@RequestBody Account account) {
-        accountService.create(account);
+    public void createAccount(@RequestBody AccountForm form) {
+        accountService.create(form);
     }
 
     @PutMapping(value = "/{id}")
-    public void update(@PathVariable Integer id, @RequestBody Account account) {
-        accountService.update(id, account);
+    public void update(@PathVariable Integer id, @RequestBody AccountForm form) {
+        accountService.update(id, form);
     }
 
     @DeleteMapping(value = "/{id}")
